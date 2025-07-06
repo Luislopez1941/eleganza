@@ -1,0 +1,131 @@
+/* CallToAction Styles */
+.cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
+}
+
+.cta__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.cta__title {
+  font-size: 42px;
+  font-weight: 300;
+  color: #2a2a2a;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.cta__description {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.cta__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta__button {
+  padding: 18px 40px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  min-width: 280px;
+}
+
+.cta__button--primary {
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border-color: #2a2a2a;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(42, 42, 42, 0.2);
+}
+
+.cta__button--primary:hover {
+  background: #ffffff;
+  color: #2a2a2a;
+  border-color: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(42, 42, 42, 0.25);
+}
+
+.cta__button--secondary {
+  background: transparent;
+  border-color: #2a2a2a;
+  color: #2a2a2a;
+}
+
+.cta__button--secondary:hover {
+  background: #2a2a2a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(42, 42, 42, 0.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cta {
+    padding: 60px 0;
+  }
+
+  .cta__title {
+    font-size: 32px;
+  }
+
+  .cta__description {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .cta__buttons {
+    gap: 12px;
+  }
+
+  .cta__button {
+    padding: 16px 32px;
+    font-size: 15px;
+    min-width: 250px;
+  }
+}
+
+@media (min-width: 640px) {
+  .cta__buttons {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta__title {
+    font-size: 28px;
+  }
+
+  .cta__button {
+    min-width: 100%;
+  }
+
+  .cta__buttons {
+    flex-direction: column;
+  }
+}

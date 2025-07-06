@@ -1,0 +1,197 @@
+/* Hero Styles */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+}
+
+.hero__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image:
+    radial-gradient(circle at 25% 25%, #000 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, #000 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero__decorative {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+}
+
+.hero__decorative-line-1 {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 1px;
+  height: 96px;
+  background: #ffd700;
+  transform: rotate(45deg);
+}
+
+.hero__decorative-line-2 {
+  position: absolute;
+  bottom: 25%;
+  right: 25%;
+  width: 1px;
+  height: 128px;
+  background: #ffd700;
+  transform: rotate(12deg);
+}
+
+.hero__decorative-dot-1 {
+  position: absolute;
+  top: 33.333%;
+  right: 33.333%;
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+}
+
+.hero__decorative-dot-2 {
+  position: absolute;
+  bottom: 33.333%;
+  left: 33.333%;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.hero__collection-tag {
+  color: #ffd700;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.hero__title {
+  font-size: 96px;
+  font-weight: 200;
+  letter-spacing: 1.5px;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.hero__description {
+  font-size: 20px;
+  color: #4b5563;
+  margin: 48px auto;
+  max-width: 768px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.hero__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 64px;
+}
+
+.hero__button {
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__button--primary {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+  border-radius: 50px;
+}
+
+
+.hero__button--secondary {
+  background: transparent;
+  border-color: #000;
+  color: #000;
+  border-radius: 50px;
+}
+
+.hero__button--secondary:hover {
+  background: #000;
+  color: #fff;
+}
+
+.hero__button-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  transition: transform 0.3s ease;
+}
+
+.hero__button:hover .hero__button-icon {
+  transform: translateX(4px);
+}
+
+
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 48px;
+  }
+
+  .hero__subtitle {
+    font-size: 24px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+  }
+
+}
+
+@media (min-width: 640px) {
+  .hero__buttons {
+    flex-direction: row;
+  }
+}

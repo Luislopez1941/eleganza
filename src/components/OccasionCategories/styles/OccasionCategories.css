@@ -1,0 +1,159 @@
+/* OccasionCategories Styles */
+.occasion-categories {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%);
+}
+
+.occasion-categories__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.occasion-categories__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.occasion-categories__title {
+  font-size: 42px;
+  font-weight: 300;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.occasion-categories__description {
+  font-size: 18px;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.occasion-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.occasion-categories__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(42, 42, 42, 0.08);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.occasion-categories__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(42, 42, 42, 0.12);
+}
+
+.occasion-categories__image-container {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.occasion-categories__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.occasion-categories__card:hover .occasion-categories__image {
+  transform: scale(1.05);
+}
+
+.occasion-categories__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(42, 42, 42, 0.7) 0%,
+    rgba(42, 42, 42, 0.3) 50%,
+    rgba(42, 42, 42, 0.1) 100%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.occasion-categories__card:hover .occasion-categories__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(42, 42, 42, 0.8) 0%,
+    rgba(42, 42, 42, 0.4) 50%,
+    rgba(42, 42, 42, 0.2) 100%
+  );
+}
+
+.occasion-categories__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  color: #ffffff;
+}
+
+.occasion-categories__card-title {
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease;
+}
+
+.occasion-categories__card:hover .occasion-categories__card-title {
+  transform: translateY(-2px);
+}
+
+.occasion-categories__card-count {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.occasion-categories__card:hover .occasion-categories__card-count {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .occasion-categories {
+    padding: 60px 0;
+  }
+
+  .occasion-categories__title {
+    font-size: 32px;
+  }
+
+  .occasion-categories__description {
+    font-size: 16px;
+  }
+
+  .occasion-categories__grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .occasion-categories__content {
+    padding: 20px;
+  }
+
+  .occasion-categories__card-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .occasion-categories__grid {
+    grid-template-columns: 1fr;
+  }
+}
