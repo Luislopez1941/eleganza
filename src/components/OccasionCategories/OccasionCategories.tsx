@@ -1,39 +1,30 @@
-import "./styles/OccasionCategories.css";
+'use client'
 
-const categories = [
-  {
-    name: "Bodas & Ceremonias",
-    image: "/api/placeholder/400/300",
-    count: "150+ estilos",
-  },
-  {
-    name: "Galas & Eventos",
-    image: "/api/placeholder/400/300",
-    count: "200+ diseños",
-  },
-  {
-    name: "Cocktail & Fiestas",
-    image: "/api/placeholder/400/300",
-    count: "120+ opciones",
-  },
-  {
-    name: "Graduaciones",
-    image: "/api/placeholder/400/300",
-    count: "80+ modelos",
-  },
-  {
-    name: "Cenas de Gala",
-    image: "/api/placeholder/400/300",
-    count: "100+ vestidos",
-  },
-  {
-    name: "Ocasiones Especiales",
-    image: "/api/placeholder/400/300",
-    count: "180+ estilos",
-  },
-];
+import { useEffect, useState } from "react";
+import "./styles/OccasionCategories.css";
+import useServerStore from "@/zustand/server";
+import APIs from "@/services/APIS";
 
 export default function OccasionCategories() {
+  const { baseUrl, store_id } = useServerStore();
+
+  const [categories, setCategories] = useState<any>([])
+
+  const fetch = async () => {
+
+    let store_id = 1
+    try {
+      let result: any = await APIs.getCategories(store_id)
+      setCategories(result.data)
+    } catch (error) {
+
+    }
+  }
+
+  useEffect(() => {
+    fetch()
+  }, [])
+
   return (
     <section className="occasion-categories">
       <div className="occasion-categories__container">
@@ -45,11 +36,11 @@ export default function OccasionCategories() {
         </div>
 
         <div className="occasion-categories__grid">
-          {categories.map((category, index) => (
+          {categories.map((category: any, index: any) => (
             <div key={index} className="occasion-categories__card">
               <div className="occasion-categories__image-container">
                 <img
-                  src={category.image}
+                  src={`${baseUrl}${category.image}`}
                   alt={category.name}
                   className="occasion-categories__image"
                 />
