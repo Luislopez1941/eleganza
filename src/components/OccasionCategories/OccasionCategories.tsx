@@ -7,7 +7,7 @@ import APIs from "@/services/APIS";
 import { useRouter } from "next/navigation";
 
 export default function OccasionCategories() {
-  const { baseUrl } = useServerStore();
+  const { baseUrl, categoryId } = useServerStore();
   const setCategoryId = useServerStore(state => state.setCategoryId);
   const router = useRouter();
   const [categories, setCategories] = useState<any>([])
