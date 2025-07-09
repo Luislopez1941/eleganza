@@ -6,6 +6,9 @@ interface ServerState {
 
     store_id: number;
     setStore: (url: any) => void;
+
+    categoryId: number;
+    setCategoryId: (url: any) => void;
 }
 
 const useServerStore = create<ServerState>((set) => ({
@@ -14,6 +17,9 @@ const useServerStore = create<ServerState>((set) => ({
 
     store_id: 1,
     setStore: (x) => set({ store_id: x }),
+
+    categoryId: 0,
+    setCategoryId: (x) => set({ categoryId: x }),
 }));
 
 export default useServerStore;

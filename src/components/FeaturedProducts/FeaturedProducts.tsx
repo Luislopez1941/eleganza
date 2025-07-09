@@ -1,5 +1,10 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./styles/FeaturedProducts.css";
+import APIs from "@/services/APIS";
+import useServerStore from "@/zustand/server";
 
 const featuredProducts = [
   {
@@ -79,17 +84,52 @@ const featuredProducts = [
   },
 ];
 
-const categories = [
-  "Todos",
-  "Gala",
-  "Cocktail",
-  "Noche",
-  "Fiesta",
-  "Madrina",
-  "Boda",
-];
+
+
+// const categories = [
+//   { id: 1, name: "Todos" },
+//   { id: 1, name: "Gala" },
+//   { id: 3, name: "Cocktail" },
+//   { id: 4, name: "Noche" },
+//   { id: 5, name: "Fiesta" },
+//   { id: 6, name: "Madrina" },
+//   { id: 7, name: "Boda" },
+//   { id: 8, name: "Graduación" },
+//   { id: 9, name: "Opera" },
+// ];
+
 
 export default function FeaturedProducts() {
+ const { baseUrl, store_id } = useServerStore();
+  const [products, setProducts] = useState<any>([])
+
+  const [categories, setCategories] = useState<any>([])
+
+  const fetch = async () => {
+
+    let store_id = 1
+    try {
+      let result: any = await APIs.getCategories(store_id)
+      setCategories(result.data)
+    } catch (error) {
+
+    }
+  }
+
+  useEffect(() => {
+    fetch()
+  }, [])
+
+  const getSections = async (category: any) => {
+    try {
+      let result: any = await APIs.getProducts(category.id)
+      setProducts(result)
+    } catch (error) {
+
+    }
+   
+  }
+
   return (
     <section className="featured-products">
       <div className="featured-products__container">
@@ -103,24 +143,23 @@ export default function FeaturedProducts() {
 
         {/* Category filters */}
         <div className="featured-products__filters">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`featured-products__filter-button ${
-                category === "Todos"
-                  ? "featured-products__filter-button--active"
-                  : "featured-products__filter-button--inactive"
-              }`}
+          {categories.map((category: any) => (
+            <button onClick={() => getSections(category)}
+              key={category.id}
+              className={`featured-products__filter-button ${category.name === "Todos"
+                ? "featured-products__filter-button--active"
+                : "featured-products__filter-button--inactive"
+                }`}
             >
-              {category}
+              {category.name}
             </button>
           ))}
         </div>
 
         {/* Products grid */}
         <div className="featured-products__grid">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+          {products?.map((product: any) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 

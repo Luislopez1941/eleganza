@@ -74,6 +74,12 @@ const APIs = {
     },
 
 
+    getProducts: async (categoryId: number) => {
+        const path = `products/category/${categoryId}`;
+        return ConfigurationAPIs.get(path);
+    },
+
+
 
 
 
