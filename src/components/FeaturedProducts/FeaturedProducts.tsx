@@ -122,7 +122,10 @@ export default function FeaturedProducts() {
     fetch()
   }, [])
 
-  const getSections = async (category: any) => {
+  const [index, setIndex] = useState<any>(0)
+
+  const getSections = async (category: any, i: number) => {
+    setIndex(i)
     try {
       let result: any = await APIs.getProducts(category.id)
       setProducts(result)
@@ -142,13 +145,13 @@ export default function FeaturedProducts() {
             buscan la perfección en cada detalle y ocasión especial.
           </p>
         </div>
-
         {/* Category filters */}
         <div className="featured-products__filters">
-          {categories.map((category: any) => (
-            <button onClick={() => getSections(category)}
+          {categories.map((category: any, i: number) => (
+            <button onClick={() => getSections(category, i)}
+
               key={category.id}
-              className={`featured-products__filter-button ${category.name === "Todos"
+              className={`featured-products__filter-button ${i == index ? 'active' : ''} ${category.name === "Todos"
                 ? "featured-products__filter-button--active"
                 : "featured-products__filter-button--inactive"
                 }`}

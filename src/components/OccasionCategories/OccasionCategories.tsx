@@ -12,8 +12,8 @@ export default function OccasionCategories() {
   const router = useRouter();
   const [categories, setCategories] = useState<any>([])
 
-  const fetch = async () => {
 
+  const fetch = async () => {
     let store_id = 1
     try {
       let result: any = await APIs.getCategories(store_id)
@@ -28,6 +28,7 @@ export default function OccasionCategories() {
   }, [])
 
   const routerSection = (category: any) => {
+    
     setCategoryId(category.id)
     router.push(`/category`);
   }
@@ -43,14 +44,10 @@ export default function OccasionCategories() {
         </div>
 
         <div className="occasion-categories__grid">
-          {categories.map((category: any, index: any) => (
-            <div key={index} className="occasion-categories__card" onClick={() => routerSection(category)}>
+          {categories.map((category: any, i: any) => (
+            <div key={i} className={`occasion-categories__card`} onClick={() => routerSection(category)}>
               <div className="occasion-categories__image-container">
-                <img
-                  src={`${baseUrl}${category.image}`}
-                  alt={category.name}
-                  className="occasion-categories__image"
-                />
+                <img src={`${baseUrl}${category.image}`} alt={category.name} className="occasion-categories__image"/>
                 <div className="occasion-categories__overlay"></div>
                 <div className="occasion-categories__content">
                   <h3 className="occasion-categories__card-title">

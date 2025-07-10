@@ -48,6 +48,7 @@
   cursor: pointer;
 }
 
+
 .occasion-categories__card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 35px rgba(42, 42, 42, 0.12);
