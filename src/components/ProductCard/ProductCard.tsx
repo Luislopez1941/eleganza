@@ -1,63 +1,130 @@
-'use client'
-
 import { Heart, Eye, ShoppingBag, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import "./styles/ProductCard.css";
 import useServerStore from "@/zustand/server";
 
-interface ProductCardProps {
-  id: number;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  image: string;
-  isNew?: boolean;
-  isSale?: boolean;
-  category: string;
-  variations?: Array<{ size: string }>;
-  onAddToCart?: (product: any) => void;
-  onSendWhatsApp?: (product: any) => void;
-}
-
 export default function ProductCard({ product }: any) {
- const { baseUrl, store_id } = useServerStore();
+  const { baseUrl, store_id } = useServerStore();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedSize, setSelectedSize] = useState<string>("");
 
-  const handleAddToCart = () => {
-    onAddToCart?.(product);
+  const handleSizeClick = (e: React.MouseEvent, size: string) => {
+    e.stopPropagation();
+    setSelectedSize(size);
   };
 
-  const handleSendWhatsApp = () => {
-    onSendWhatsApp?.(product);
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    console.log("Added to cart:", { product, selectedSize });
+  };
+
+  const handleSendWhatsApp = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const currentImage = product?.images
+      ? `${baseUrl}${product.images[currentImageIndex]}`
+      : "";
+    const sizeText = selectedSize ? ` - Talla: ${selectedSize}` : "";
+    const message = `¡Hola! Me interesa este producto:
+
+📷 Imagen: ${currentImage}
+🏷️ Nombre: ${product.name}
+💰 Precio: $${product.price}${sizeText}
+
+¿Podrías darme más información?`;
+
+    const whatsappUrl = `https://wa.me/9171133664?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   const handleWishlist = () => {
-    // TODO: Implement wishlist functionality
     console.log("Added to wishlist:", product);
   };
 
   const handleQuickView = () => {
-    // TODO: Implement quick view functionality
     console.log("Quick view:", product);
   };
+
+  // Check if product has multiple images for carousel
+  const hasMultipleImages = product?.images && product.images.length > 1;
 
   return (
     <div className="product-card">
       {/* Image Container */}
       <div className="product-card__image-container">
-        <img src={`${baseUrl}${product?.images[0]}`} alt={product.name} className="product-card__image" />
+        {hasMultipleImages ? (
+          <Swiper
+            modules={[Navigation, Pagination, EffectFade]}
+            spaceBetween={0}
+            slidesPerView={1}
+            speed={800}
+            effect="slide"
+            navigation={{
+              prevEl: ".swiper-button-prev-custom",
+              nextEl: ".swiper-button-next-custom",
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex)}
+            className={`product-card__swiper ${product.images.length === 1 ? "single-image" : ""}`}
+            loop={product.images.length > 2}
+            autoplay={false}
+            grabCursor={true}
+            centeredSlides={true}
+          >
+            {product.images.map((image: string, index: number) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={`${baseUrl}${image}`}
+                  alt={`${product.name} - Image ${index + 1}`}
+                  className="product-card__image"
+                />
+              </SwiperSlide>
+            ))}
 
-        {/* Badges */}
-        {/* <div className="product-card__badges">
-          {isNew && (
-            <span className="product-card__badge product-card__badge--new">
-              NUEVO
-            </span>
-          )}
-          {isSale && (
-            <span className="product-card__badge product-card__badge--sale">
-              OFERTA
-            </span>
-          )}
-        </div> */}
+            {/* Custom Navigation Buttons */}
+            {product.images.length > 1 && (
+              <>
+                <div className="swiper-button-prev-custom product-card__carousel-navigation product-card__carousel-navigation--prev">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </div>
+                <div className="swiper-button-next-custom product-card__carousel-navigation product-card__carousel-navigation--next">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </div>
+              </>
+            )}
+          </Swiper>
+        ) : (
+          <img
+            src={`${baseUrl}${product?.images}`}
+            alt={product.name}
+            className="product-card__image"
+          />
+        )}
 
         {/* Quick actions */}
         <div className="product-card__actions">
@@ -80,33 +147,31 @@ export default function ProductCard({ product }: any) {
 
       {/* Content */}
       <div className="product-card__content">
-        {/* <div className="product-card__category">{category}</div> */}
         <h3 className="product-card__title">{product.name}</h3>
 
         {/* Price */}
         <div className="product-card__price-container">
           <span className="product-card__price">${product.price}</span>
-          {/* {originalPrice && (
-            <span className="product-card__original-price">
-              ${originalPrice}
-            </span>
-          )} */}
         </div>
 
         {/* Size options */}
         <div className="product-card__sizes">
           {["XS", "S", "M", "L", "XL"].map((size) => {
-            const isAvailable = product.variations.some(
-              (variation: any) => variation.size === size
+            const isAvailable = product.variations?.some(
+              (variation: any) => variation.size === size,
             );
 
             return (
               <button
                 key={size}
-                className={`product-card__size ${isAvailable
+                className={`product-card__size ${
+                  isAvailable
                     ? "product-card__size--available"
                     : "product-card__size--unavailable"
-                  }`}
+                } ${selectedSize === size ? "product-card__size--selected" : ""}`}
+                onClick={(e) =>
+                  isAvailable ? handleSizeClick(e, size) : undefined
+                }
                 disabled={!isAvailable}
                 title={`Talla ${size}`}
               >
@@ -116,7 +181,7 @@ export default function ProductCard({ product }: any) {
           })}
         </div>
 
-        {/* Purchase buttons - improved visual design */}
+        {/* Purchase buttons */}
         <div className="product-card__purchase-buttons">
           <button
             className="product-card__whatsapp-buy"

@@ -3,8 +3,8 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 class ApiService {
   private axiosInstance: AxiosInstance;
 
-  // constructor(baseURL: string = 'https://jllc-back.com/proservicios/api/') {
-  constructor(baseURL: string = 'http://localhost:3000/') {
+  constructor(baseURL: string = 'https://jllc-back.com/eleganza/') {
+  // constructor(baseURL: string = 'http://localhost:3000/') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {

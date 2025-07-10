@@ -12,7 +12,7 @@ interface ServerState {
 }
 
 const useServerStore = create<ServerState>((set) => ({
-    baseUrl: 'http://localhost:3000', // URL por defecto
+    baseUrl: 'https://jllc-back.com/eleganza/', // URL por defecto
     setBaseUrl: (url) => set({ baseUrl: url }),
 
     store_id: 1,
