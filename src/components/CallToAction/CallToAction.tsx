@@ -14,7 +14,7 @@ export default function CallToAction() {
             Reservar Cita Personal
           </button>
           <button className="cta__button cta__button--secondary">
-            Llamar Ahora: +34 900 123 456
+            Llamar Ahora: 998 486 9828
           </button>
         </div>
       </div>

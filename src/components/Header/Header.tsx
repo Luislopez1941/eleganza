@@ -57,21 +57,11 @@ export default function Header() {
               </a>
             </nav>
           </div>
-
           <div className="header__right">
             <div className="header__search">
               <Search className="header__search-icon" />
-              <input
-                type="text"
-                placeholder="Buscar vestidos elegantes..."
-                className="header__search-input"
-              />
+              <input type="text" placeholder="Buscar vestidos elegantes..." className="header__search-input"/>
             </div>
-
-            <button className="header__icon-button">
-              <Heart />
-            </button>
-
             <button className="header__icon-button">
               <User />
             </button>

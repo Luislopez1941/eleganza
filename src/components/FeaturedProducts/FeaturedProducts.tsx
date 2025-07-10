@@ -100,7 +100,7 @@ const featuredProducts = [
 
 
 export default function FeaturedProducts() {
- const { baseUrl, store_id } = useServerStore();
+  const { baseUrl, store_id } = useServerStore();
   const [products, setProducts] = useState<any>([])
 
   const [categories, setCategories] = useState<any>([])
@@ -110,7 +110,9 @@ export default function FeaturedProducts() {
     let store_id = 1
     try {
       let result: any = await APIs.getCategories(store_id)
+      let response: any = await APIs.getProducts(result.data[0].id)
       setCategories(result.data)
+      setProducts(response)
     } catch (error) {
 
     }
@@ -127,7 +129,7 @@ export default function FeaturedProducts() {
     } catch (error) {
 
     }
-   
+
   }
 
   return (
