@@ -17,66 +17,11 @@
     linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
     url("https://images.pexels.com/photos/17478012/pexels-photo-17478012.jpeg")
       center center/cover no-repeat;
-  background-attachment: fixed;
+
   background-position: center;
   background-size: cover;
 }
 
-/* .layout__pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  background-image:
-    radial-gradient(circle at 25% 25%, #000 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, #000 1px, transparent 1px);
-  background-size: 60px 60px;
-} */
-
-.layout__decorative {
-  position: absolute;
-  inset: 0;
-  opacity: 0.3;
-}
-
-.layout__decorative-line-1 {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 1px;
-  height: 96px;
-  background: #ffd700;
-  transform: rotate(45deg);
-}
-
-.layout__decorative-line-2 {
-  position: absolute;
-  bottom: 25%;
-  right: 25%;
-  width: 1px;
-  height: 128px;
-  background: #ffd700;
-  transform: rotate(12deg);
-}
-
-.layout__decorative-dot-1 {
-  position: absolute;
-  top: 33.333%;
-  right: 33.333%;
-  width: 8px;
-  height: 8px;
-  background: #ffd700;
-  border-radius: 50%;
-}
-
-.layout__decorative-dot-2 {
-  position: absolute;
-  bottom: 33.333%;
-  left: 33.333%;
-  width: 4px;
-  height: 4px;
-  background: #ffd700;
-  border-radius: 50%;
-}
 
 .layout__content {
   position: relative;
@@ -94,7 +39,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 24px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+ 
 }
 
 .layout__title {
@@ -103,7 +48,7 @@
   letter-spacing: 1.5px;
   color: #ffffff;
   margin-bottom: 48px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+
 }
 
 .layout__buttons {
@@ -129,14 +74,13 @@
   transition: all 0.5s ease;
   text-decoration: none;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 50px;
 }
 
 .layout__button:hover {
   background: #ffffff;
   color: #000000;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
 }
 
 .layout__button-icon {

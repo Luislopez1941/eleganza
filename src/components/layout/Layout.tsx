@@ -7,17 +7,6 @@ export default function Layout() {
       {/* Background */}
       <div className="layout__background" />
 
-      {/* Elegant pattern overlay */}
-      <div className="layout__pattern" />
-
-      {/* Subtle decorative elements */}
-      <div className="layout__decorative">
-        <div className="layout__decorative-line-1" />
-        <div className="layout__decorative-line-2" />
-        <div className="layout__decorative-dot-1" />
-        <div className="layout__decorative-dot-2" />
-      </div>
-
       {/* Content */}
       <div className="layout__content">
         <div className="layout__collection-tag">Colección Verano 2025</div>

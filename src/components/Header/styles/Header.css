@@ -156,7 +156,7 @@
   letter-spacing: 0.4px;
   position: relative;
   transition: all 0.3s ease;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 .header__nav-link:hover {
