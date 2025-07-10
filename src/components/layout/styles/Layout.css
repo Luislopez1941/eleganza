@@ -17,6 +17,8 @@
     url("https://images.pexels.com/photos/17478012/pexels-photo-17478012.jpeg")
       center center/cover no-repeat;
   background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
 .layout__pattern {
