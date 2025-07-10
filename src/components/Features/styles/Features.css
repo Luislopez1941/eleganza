@@ -52,12 +52,12 @@
 .features__icon svg {
   width: 32px;
   height: 32px;
-  color: #6b7280;
+  fill: #b9b9b9;
   transition: color 0.4s ease;
 }
 
 .features__card:hover .features__icon svg {
-  color: #ffffff;
+  fill: #ffffff;
 }
 
 .features__title {

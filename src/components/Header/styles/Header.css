@@ -1,12 +1,77 @@
 /* Header Styles */
 .header {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  position: sticky;
+  background: none;
+  position: fixed;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid #f3f4f6;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.header--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+
+
+}
+
+.header--scrolled .header__logo {
+  color: #000000;
+}
+
+.header--scrolled .header__nav-link {
+  color: #000000;
+}
+
+.header--scrolled .header__nav-link:hover {
+  color: #ffd700;
+}
+
+.header--scrolled .header__icon-button {
+  color: #000000;
+}
+
+.header--scrolled .header__icon-button:hover {
+  color: #ffd700;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header--scrolled .header__menu-button {
+  color: #000000;
+}
+
+.header--scrolled .header__menu-button:hover {
+  color: #ffd700;
+}
+
+.header--scrolled .header__search {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header--scrolled .header__search-input {
+  color: #000000;
+}
+
+.header--scrolled .header__search-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.header--scrolled .header__search-icon {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.header--scrolled .header__top-bar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header--scrolled .header__top-bar-text {
+  color: rgba(0, 0, 0, 0.7);
+  text-shadow: none;
+}
+
+.header--scrolled .header__contact-info {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: none;
 }
 
 .header__container {
@@ -19,28 +84,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 10px 0;
   font-size: 14px;
-  border-bottom: 1px solid #f9fafb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header__top-bar-text {
-  color: #4b5563;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header__contact-info {
   display: flex;
   gap: 24px;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header__main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 0;
+  padding: 15px 0;
 }
 
 .header__left {
@@ -51,17 +118,24 @@
 
 .header__menu-button {
   display: none;
-  color: #000;
+  color: #ffffff;
   background: transparent;
   border: none;
   cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.header__menu-button:hover {
+  color: #ffd700;
 }
 
 .header__logo {
   font-size: 30px;
   font-weight: 200;
   letter-spacing: 1.5px;
-  color: #000;
+  color: #ffffff;
+
 }
 
 .header__logo-dot {
@@ -76,12 +150,13 @@
 }
 
 .header__nav-link {
-  color: #000;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 300;
   letter-spacing: 0.4px;
   position: relative;
   transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .header__nav-link:hover {
@@ -112,8 +187,9 @@
 .header__search {
   display: flex;
   align-items: center;
-  background: #f9fafb;
-  border: 1px solid #f3f4f6;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
   padding: 10px 20px;
   transition: border-color 0.15s ease;
@@ -127,36 +203,37 @@
   width: 16px;
   height: 16px;
   margin-right: 12px;
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .header__search-input {
   background: transparent;
   border: none;
   outline: none;
-  color: #000;
+  color: #ffffff;
   font-weight: 300;
   width: 192px;
 }
 
 .header__search-input::placeholder {
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .header__icon-button {
   background: transparent;
   border: none;
-  color: #000;
+  color: #ffffff;
   padding: 8px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .header__icon-button:hover {
   color: #ffd700;
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .header__icon-button svg {
@@ -201,7 +278,9 @@
     display: none;
   }
 
-  .header__logo {
+  
+
+  .header__top-bar {
     display: none;
   }
 
@@ -211,5 +290,9 @@
 
   .header__left {
     gap: 16px;
+  }
+
+  .header__logo {
+    font-size: 24px;
   }
 }

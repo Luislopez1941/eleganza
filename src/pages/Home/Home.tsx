@@ -6,6 +6,7 @@ import Features from '@/components/Features/Features'
 import FeaturedProducts from '@/components/FeaturedProducts/FeaturedProducts'
 import OccasionCategories from '@/components/OccasionCategories/OccasionCategories'
 import CallToAction from '@/components/CallToAction/CallToAction'
+import Location from '@/components/Location/Location'
 import Footer from '@/components/Footer/Footer'
 
 const Home = () => {
@@ -17,7 +18,9 @@ const Home = () => {
         <Features />
         <OccasionCategories />
         <FeaturedProducts />
+        <Location />
         <CallToAction />
+        
         <Footer />
     </div>
   )

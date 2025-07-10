@@ -1,12 +1,13 @@
-'use client'
+"use client";
 
 import { Search, ShoppingCart, Heart, User, Menu } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MobileMenu from "./MobileMenu";
 import "./styles/Header.css";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -16,17 +17,27 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="header">
+    <header className={`header ${isScrolled ? "header--scrolled" : ""}`}>
       <div className="header__container">
-        {/* Top bar */}
+        {/* Top bar - hidden on mobile */}
         <div className="header__top-bar">
-          <p className="header__top-bar-text">
-            ✨ Disponibilidad inmediata en Cancún
-          </p>
+          <div className="header__top-bar-text">
+            Envío gratuito en pedidos superiores a €100
+          </div>
           <div className="header__contact-info">
-            <span>📞 998 486 9828</span>
-            <span>📧 eleganza@eleganza.com</span>
+            <span>+34 123 456 789</span>
+            <span>info@eleganza.com</span>
           </div>
         </div>
 
@@ -57,11 +68,21 @@ export default function Header() {
               </a>
             </nav>
           </div>
+
           <div className="header__right">
             <div className="header__search">
               <Search className="header__search-icon" />
-              <input type="text" placeholder="Buscar vestidos elegantes..." className="header__search-input"/>
+              <input
+                type="text"
+                placeholder="Buscar vestidos elegantes..."
+                className="header__search-input"
+              />
             </div>
+
+       
+
+         
+
             <button className="header__icon-button">
               <User />
             </button>

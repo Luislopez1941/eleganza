@@ -3,46 +3,34 @@ import "./styles/Layout.css";
 
 export default function Layout() {
   return (
-    <section className="hero">
+    <section className="layout">
       {/* Background */}
-      <div className="hero__background"></div>
+      <div className="layout__background" />
 
       {/* Elegant pattern overlay */}
-      <div className="hero__pattern"></div>
+      <div className="layout__pattern" />
 
       {/* Subtle decorative elements */}
-      <div className="hero__decorative">
-        <div className="hero__decorative-line-1"></div>
-        <div className="hero__decorative-line-2"></div>
-        <div className="hero__decorative-dot-1"></div>
-        <div className="hero__decorative-dot-2"></div>
+      <div className="layout__decorative">
+        <div className="layout__decorative-line-1" />
+        <div className="layout__decorative-line-2" />
+        <div className="layout__decorative-dot-1" />
+        <div className="layout__decorative-dot-2" />
       </div>
 
-      <div className="hero__content">
-        <div>
-          <p className="hero__collection-tag">Colección Primavera 2024</p>
-          <h1 className="hero__title">Frescura y Estilo</h1>
-        </div>
+      {/* Content */}
+      <div className="layout__content">
+        <div className="layout__collection-tag">Colección Verano 2025</div>
 
-        <p className="hero__description">
-          Renueva tu armario con nuestra selección de vestidos pensados para cada ocasión. Colores vibrantes, cortes modernos y telas ligeras que acompañan tu estilo esta temporada. Encuentra ese look que te hace sentir segura, cómoda y siempre a la moda.
-        </p>
+        <h1 className="layout__title">Frescura y Estilo</h1>
 
-        <div className="hero__buttons">
-          <a href="#" className="hero__button hero__button--primary">
-            Explorar Vestidos
-            <ArrowRight className="hero__button-icon" />
-          </a>
-
-          <a href="#" className="hero__button hero__button--secondary">
-            Ver Lookbook
+        <div className="layout__buttons">
+          <a href="#" className="layout__button">
+            Explorar Colección
+            <ArrowRight className="layout__button-icon" />
           </a>
         </div>
-
-      
       </div>
-
-    
     </section>
   );
 }
