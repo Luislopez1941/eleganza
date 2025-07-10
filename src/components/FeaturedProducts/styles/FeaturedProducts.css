@@ -139,8 +139,4 @@
     grid-template-columns: 1fr;
   }
 
-  .featured-products__filters {
-    flex-direction: column;
-    align-items: center;
-  }
 }
