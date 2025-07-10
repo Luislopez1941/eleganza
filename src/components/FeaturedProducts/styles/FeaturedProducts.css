@@ -68,15 +68,15 @@
 .featured-products__filter-button--inactive {
   border-color: #d1d5db;
   color: #6b7280;
-  background: #ffffff;
+  /* background: #ffffff; */
 }
 
-.featured-products__filter-button--inactive:hover {
+/* .featured-products__filter-button--inactive:hover {
   background: #f9fafb;
   border-color: #9ca3af;
   color: #374151;
   transform: translateY(-1px);
-}
+} */
 
 .featured-products__grid {
   display: grid;
