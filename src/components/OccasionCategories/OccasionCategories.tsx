@@ -30,6 +30,7 @@ export default function OccasionCategories() {
   const routerSection = (category: any) => {
     
     setCategoryId(category.id)
+    localStorage.setItem('id_category', category.id)
     router.push(`/category`);
   }
 

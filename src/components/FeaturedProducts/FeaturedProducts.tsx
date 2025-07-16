@@ -86,19 +86,6 @@ const featuredProducts = [
 
 
 
-// const categories = [
-//   { id: 1, name: "Todos" },
-//   { id: 1, name: "Gala" },
-//   { id: 3, name: "Cocktail" },
-//   { id: 4, name: "Noche" },
-//   { id: 5, name: "Fiesta" },
-//   { id: 6, name: "Madrina" },
-//   { id: 7, name: "Boda" },
-//   { id: 8, name: "Graduación" },
-//   { id: 9, name: "Opera" },
-// ];
-
-
 export default function FeaturedProducts() {
   const { baseUrl, store_id } = useServerStore();
   const [products, setProducts] = useState<any>([])
@@ -110,9 +97,9 @@ export default function FeaturedProducts() {
     let store_id = 1
     try {
       let result: any = await APIs.getCategories(store_id)
-      let response: any = await APIs.getProducts(result.data[0].id)
+      let response: any = await APIs.getProductsThree(result.data[0].id)
       setCategories(result.data)
-      setProducts(response)
+      setProducts(response.data)
     } catch (error) {
 
     }
@@ -127,8 +114,8 @@ export default function FeaturedProducts() {
   const getSections = async (category: any, i: number) => {
     setIndex(i)
     try {
-      let result: any = await APIs.getProducts(category.id)
-      setProducts(result)
+      let result: any = await APIs.getProductsThree(category.id)
+      setProducts(result.data)
     } catch (error) {
 
     }

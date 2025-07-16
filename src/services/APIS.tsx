@@ -79,6 +79,18 @@ const APIs = {
         return ConfigurationAPIs.get(path);
     },
 
+    
+    getProductsAll: async () => {
+        const path = 'products/get/all';
+        return ConfigurationAPIs.get(path);
+    },
+
+
+      getProductsThree: async (categoryId: number) => {
+        const path = `products/three/category/${categoryId}`;
+        return ConfigurationAPIs.get(path);
+    },
+
 
 
 
